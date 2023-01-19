@@ -5,10 +5,8 @@ import com.study.newBoard.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+
 
 @Controller
 public class BoardController {
@@ -31,7 +29,6 @@ public class BoardController {
     public String BoardWritePro(Board board) {
 
         boardService.write(board);
-
         return "";
     }
 
@@ -47,5 +44,7 @@ public class BoardController {
             model.addAttribute("view", board);
         return "boardview";
     }
+
+
 }
 

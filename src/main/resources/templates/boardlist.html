@@ -5,19 +5,11 @@
     <title>게시물 리스트 페이지</title>
 
 </head>
-<style>
-    .layout {
-
-
-        width : 500px;
-        margin : 0 auto;
-        margin-top: 40px;
-    }
-</style>
 <body>
-<div class = "layout">
-    <table>
-        <thead>
+<link rel="stylesheet" type="text/css" th:href="@{/bootstrap.min.css}">
+<div class = "container my-3">
+    <table class="table">
+        <thead class="table-dark">
             <tr>
                 <th>글번호</th>
                 <th>제목</th>
@@ -32,7 +24,7 @@
             </tr>
         </tbody>
     </table>
-
+    <a th:href="@{/board/write}" class="btn btn-primary">게시물 등록</a>
 </div>
 </body>
 </html>
