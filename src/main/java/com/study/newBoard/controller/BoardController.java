@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -20,6 +21,12 @@ public class BoardController {
 
         return "boardwrite";
     }
+
+    @GetMapping("/")
+    public String root(){
+        return "redirect:/board/list";
+    }
+
     @PostMapping("/board/writepro")
     public String BoardWritePro(Board board) {
 
@@ -34,8 +41,10 @@ public class BoardController {
         return "boardlist";
     }
 
-    @GetMapping("/board/view")
-    public String boardView(){
+    @GetMapping("/board/view/{id}")
+    public String boardView(Model model, @PathVariable("id") Integer id){
+        Board board = this.boardService.getBoard(id);
+            model.addAttribute("view", board);
         return "boardview";
     }
 }

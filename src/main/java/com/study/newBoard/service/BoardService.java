@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BoardService {
@@ -22,5 +23,13 @@ public class BoardService {
         return boardRepository.findAll();
     }
 
+    public Board getBoard(Integer id) {
+        Optional<Board> board = this.boardRepository.findById(id);
+        if (board.isPresent()) {
+            return board.get();
+        } else {
+            throw new DataNotFoundException("정보가 없습니다.");
+        }
+    }
 
 }
